@@ -132,8 +132,43 @@ define(['app'], function (app) {
                 return defer.promise;
             }
 
+            /*
+            得到轮播图数据
+             */
+            function getBanners() {
+                var defer = $q.defer();
+                $http({
+                    url : '/index/banners',
+                    method : 'GET'
+                })
+                    .success(function (result) {
+                        defer.resolve(result.data);
+                    })
+                    .error(function () {
+                        alert('获取轮播图失败!');
+                    })
+                return defer.promise;
+            }
+            /*
+            得到首页菜品列表,商家,地址相关数据
+             */
+            function getData() {
+                var defer = $q.defer();
+                $http({
+                    url : '/index/data',
+                    method : 'GET'
+                })
+                    .success(function (result) {
+                        defer.resolve(result.data);
+                    })
+                    .error(function () {
+                        alert('获取菜品信息失败!');
+                    })
+                return defer.promise;
+            }
+
             return {sendCode, login, feedback, addAddr, getAddrsByUserId,
-                deleteAddr, updateAddr}
+                deleteAddr, updateAddr, getBanners, getData}
     }])
 })
 

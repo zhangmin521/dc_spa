@@ -4,6 +4,8 @@
 var dao_address = require('./dao_address')
 var dao_user = require('./dao_user')
 var dao_feedback = require('./dao_feedback')
+var dao_banner = require('./dao_banner')
+var dao_meal = require('./dao_meal')
 
 module.exports = {
 
@@ -73,6 +75,26 @@ module.exports = {
                 throw error;
             } else {
                 callback(result);
+            }
+        })
+    },
+
+    getBanners(callback) {
+        dao_banner.getBanners(function (error, banners) {
+            if(error) {
+                throw error;
+            } else {
+                callback(banners);
+            }
+        })
+    },
+
+    getMeals(callback) {
+        dao_meal.getMeals(function (error, meals) {
+            if(error) {
+                throw error;
+            } else {
+                callback(meals);
             }
         })
     }
